@@ -1,0 +1,155 @@
+import random
+#tic tac toe
+# COMPUTER = O
+
+array1 = ["","",""]
+array2 = ["","",""]
+array3 = ["","",""]
+
+arrays = [array1, array2, array3]
+xvalues = [1,2,3]
+
+def user_plot():
+
+    userx = int(input(f"""
+        1   2   3 
+    1 {array1} 
+    2 {array2} 
+    3 {array3}
+
+    choose your plot [first enter your x-value]: """))
+    usery = int(input("    enter your y-value: "))
+    usery -= 1
+    userx -= 1
+
+    if arrays[usery][userx] != "":
+        print("\n Please pick an empty point.")
+        user_plot()
+    else:
+        arrays[usery][userx] = "X"
+
+
+#--------------------------------------------------------------------------------
+
+def retry():
+    ycoord = random.choice(arrays)
+    xcoord = random.choice(xvalues)
+    xcoord -= 1
+    if ycoord[xcoord] == "":
+        ycoord = random.choice(arrays)
+        xcoord = random.choice(xvalues)
+        xcoord -= 1
+        ycoord[xcoord] = "O"
+        print("\nComputer played: \n")
+    elif ycoord[xcoord] != "":
+        retry()
+
+#--------------------------------------------------------------------------------
+
+def computer_plot():
+
+    ycoord = random.choice(arrays)
+    xcoord = random.choice(xvalues)
+    xcoord -= 1
+
+    if ycoord[xcoord] != "":
+        retry()
+
+    else:
+        ycoord[xcoord] = "O"
+        print("\nComputer played: \n")
+
+#--------------------------------------------------------------------------------
+
+def win():
+#horizontally
+    
+        if array1 == ["X","X","X"]:
+            print("\nPlayer has won!\n")
+            return True
+        elif array1 == ["O","O","O"]:
+            print("\nComputer has won!\n")
+            return True
+
+        if array2 == ["X","X","X"]:
+            print("\nPlayer has won!\n")
+            return True
+        elif array2 == ["O","O","O"]:
+            print("\nComputer has won!\n")
+            return True
+
+        if array3 == ["X","X","X"]:
+            print("\nPlayer has won!\n")
+            return True
+        elif array3 == ["O","O","O"]:
+            print("\nComputer has won!\n")
+            return True
+#diagonally
+        if array1[0] == "X" and array2[1] == "X" and array3[2] == "X":
+            print("\nPlayer has won!\n")
+            return True
+        elif array1[0] == "O" and array2[1] == "O" and array3[2] == "O":
+            print("\nComputer has won!\n")
+            return True
+        if array1[2] == "X" and array2[1] == "X" and array3[0] == "X":
+            print("\nPlayer has won!\n")
+            return True
+        elif array1[2] == "O" and array2[1] == "O" and array3[0] == "O":
+            print("\nComputer has won!\n")
+            return True
+#vertically
+        if array1[0] == "X" and array2[0] == "X" and array3[0] == "X":
+            print("Player has won!")
+            return True
+        elif array1[0] == "O" and array2[0] == "O" and array3[0] == "O":
+            print("\nComputer has won!\n")
+            return True
+        
+        if array1[1] == "X" and array2[1] == "X" and array3[1] == "X":
+            print("Player has won!")
+            return True
+        elif array1[1] == "O" and array2[1] == "O" and array3[1] == "O":
+            print("\nComputer has won!\n")
+            return True
+
+        if array1[2] == "X" and array2[2] == "X" and array3[2] == "X":
+            print("Player has won!")
+            return True
+        elif array1[2] == "O" and array2[2] == "O" and array3[2] == "O":
+            print("\nComputer has won!\n")
+
+            return True
+        return False
+
+#--------------------------------------------------------------------------------
+#draw 
+def draw():
+    full = all(cell != "" for row in arrays for cell in row)
+    if full and not win():
+        print("\nIt's a draw!\n")
+        return True
+    return False
+
+#--------------------------------------------------------------------------------
+
+while True:
+    user_plot()
+    if win() or draw():
+        print("Final board: \n")
+        print(f"""
+        1   2   3 
+    1 {array1} 
+    2 {array2} 
+    3 {array3} \n""")
+        break
+    else: 
+        computer_plot()
+        if win() or draw():
+            print("Final board: \n")
+            print(f"""
+        1   2   3 
+    1 {array1} 
+    2 {array2} 
+    3 {array3} \n""")
+            break
+    
