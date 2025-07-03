@@ -1,0 +1,100 @@
+import random
+
+cars1 = (0,1,2,3)
+cars2 = (0,1,2,3)
+traffic1 = random.choice(cars1)
+traffic2 = random.choice(cars2)
+
+print("You are driving from point A to point B. There are two roads, and you want to get there as fast as possible.")
+print("""
+Route 1 : A   ------------    B
+Route 2 : A   ------------    B
+""")
+print("We have analyzed the traffic on the road for you.")
+
+if traffic1 == 0 and traffic2 == 0:
+    print("""
+Route 1 : A   ------------    B
+Route 2 : A   ------------    B
+""")
+elif traffic1 == 1 and traffic2 == 0:
+    print("""
+Route 1 : A   ----------🚘     B
+Route 2 : A   ------------    B
+""")
+elif traffic1 == 2 and traffic2 == 0:
+    print("""
+Route 1 : A   ---------🚘🚘   B
+Route 2 : A   ------------   B
+""")
+elif traffic1 == 3 and traffic2 == 0:
+    print("""
+Route 1 : A   ------🚘🚘🚘    B
+Route 2 : A   -----------    B
+""")
+elif traffic1 == 0 and traffic2 == 1:
+    print("""
+Route 1 : A   ------------   B
+Route 2 : A   -----------🚘  B
+""")
+elif traffic1 == 0 and traffic2 == 2:
+    print("""
+Route 1 : A   ------------   B
+Route 2 : A   ---------🚘🚘   B
+""")
+elif traffic1 == 0 and traffic2 == 3:
+    print("""
+Route 1 : A   ------------   B
+Route 2 : A   -------🚘🚘🚘   B
+""")
+elif traffic1 == 1 and traffic2 == 1:
+    print("""
+Route 1 : A   -----------🚘  B
+Route 2 : A   -----------🚘  B
+""")
+elif traffic1 == 1 and traffic2 == 2:
+    print("""
+Route 1 : A   -----------🚘  B
+Route 2 : A   ---------🚘🚘  B
+""")
+elif traffic1 == 1 and traffic2 == 3:
+    print("""
+Route 1 : A   -----------🚘  B
+Route 2 : A   --------🚘🚘🚘  B
+""")
+elif traffic1 == 2 and traffic2 == 1:
+    print("""
+Route 1 : A   ---------🚘🚘  B
+Route 2 : A   -----------🚘  B
+""")
+elif traffic1 == 2 and traffic2 == 2:
+    print("""
+Route 1 : A   ---------🚘🚘  B
+Route 2 : A   ---------🚘🚘  B
+""")
+elif traffic1 == 2 and traffic2 == 3:
+    print("""
+Route 1 : A   ----------🚘🚘  B
+Route 2 : A   --------🚘🚘🚘  B
+""")
+elif traffic1 == 3 and traffic2 == 1:
+    print("""
+Route 1 : A   --------🚘🚘🚘  B
+Route 2 : A   -----------🚘  B
+""")
+elif traffic1 == 3 and traffic2 == 2:
+    print("""
+Route 1 : A   --------🚘🚘🚘  B
+Route 2 : A   ----------🚘🚘  B
+""")
+elif traffic1 == 3 and traffic2 == 3:
+    print("""
+Route 1 : A   --------🚘🚘🚘  B
+Route 2 : A   --------🚘🚘🚘  B
+""")
+if traffic1 > traffic2:
+    print("Taking Route 2 would be faster")
+elif traffic1 < traffic2:
+    print("Taking Route 1 would be faster")
+elif traffic1 == traffic2:
+    print("Take any, the time will be the same")
